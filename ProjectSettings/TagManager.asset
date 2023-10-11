@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: World Tile
+    uniqueID: 1076501491
+    locked: 0
+  - name: Obstacle Tile
+    uniqueID: 465897719
+    locked: 0
+  - name: Player
+    uniqueID: 1735140233
+    locked: 0
