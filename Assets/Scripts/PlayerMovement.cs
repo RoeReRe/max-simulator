@@ -11,14 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
 
     Rigidbody2D playerRigidBody;
+    Animator playerAnimator;
 
     private void Start() {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     private void Update() {
         Walk();
-        SetSpriteOrientation();
+        SetSprite();
     }
 
     void OnMove(InputValue value) {
@@ -27,9 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Walk() {
         playerRigidBody.velocity = moveInput * new Vector2(moveSpeed, moveSpeed);
+        playerAnimator.SetBool("isWalking", Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon); 
     }
 
-    private void SetSpriteOrientation() {
+    private void SetSprite() {
         if (Mathf.Abs(playerRigidBody.velocity.x) > Mathf.Epsilon) {
             transform.localScale = new Vector2(Mathf.Sign(playerRigidBody.velocity.x), 1f);
         }
