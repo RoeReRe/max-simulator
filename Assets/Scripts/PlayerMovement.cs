@@ -12,15 +12,22 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D playerRigidBody;
     Animator playerAnimator;
+    PlayerStatus playerStatus;
+
+    [SerializeField] GameObject uiCanvas;
+    [SerializeField] GameObject deathScreen;
+    [NonSerialized] bool isOnDeathScreen = false;
 
     private void Start() {
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        playerStatus = GetComponent<PlayerStatus>();
     }
 
     private void Update() {
         Walk();
         SetSprite();
+        CheckStatus();
     }
 
     void OnMove(InputValue value) {
@@ -35,6 +42,15 @@ public class PlayerMovement : MonoBehaviour
     private void SetSprite() {
         if (Mathf.Abs(playerRigidBody.velocity.x) > Mathf.Epsilon) {
             transform.localScale = new Vector2(Mathf.Sign(playerRigidBody.velocity.x), 1f);
+        }
+    }
+
+    private void CheckStatus() {
+        if (playerStatus.isDead && !isOnDeathScreen) {
+            isOnDeathScreen = true;
+            playerAnimator.SetTrigger("isDead");
+            Instantiate(deathScreen, uiCanvas.transform);
+            GetComponent<PlayerInput>().DeactivateInput();
         }
     }
 }
