@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Animator playerAnimator;
     PlayerStatus playerStatus;
     [SerializeField] Menu menu;
+    [SerializeField] FloorBehaviour floor;
 
     [SerializeField] GameObject uiCanvas;
     [SerializeField] GameObject deathScreen;
@@ -65,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
             DeathHandler deathHandler = Instantiate(deathScreen, uiCanvas.transform).GetComponent<DeathHandler>();
             deathHandler.SetDeathMessage(deathMessage);
             menu.ResetParams();
+            floor.ResetParams();
+            // rmb to update isdead
             GetComponent<PlayerInput>().DeactivateInput();
         }
     }

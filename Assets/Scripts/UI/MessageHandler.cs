@@ -28,7 +28,7 @@ public class MessageHandler : MonoBehaviour
     IEnumerator DisplayText() {
         while (msgText.maxVisibleCharacters < msgText.text.Length) {
             msgText.maxVisibleCharacters++;
-            yield return new WaitForSecondsRealtime(0.03f);
+            yield return new WaitForSecondsRealtime(0.02f);
         }
     }
 
