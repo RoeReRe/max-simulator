@@ -10,15 +10,17 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] Slider cholesterolSlider;
     [SerializeField] TMP_Text cholesterolText;
     [SerializeField] Slider weightSlider;
+    [SerializeField] TMP_Text weightText;
 
     [NonSerialized] public float cholesterolValue = 65f;
-    [NonSerialized] public float weightValue = 85f;
+    [NonSerialized] public float weightValue = 95f;
     [NonSerialized] public float maxCholesterol = 100f;
     [NonSerialized] public float maxWeight = 150f;
     [NonSerialized] public float cholesterolThreshold = 70f;
+    [NonSerialized] public float weightThreshold = 95f;
 
     [SerializeField] float cholesterolSpeed = 0.8f;
-    [SerializeField] float weightSpeed = 0.2f;
+    [SerializeField] float weightSpeed = 0.3f;
     [NonSerialized] public bool isCholesterolChanging = true;
 
     [NonSerialized] public bool isDead;
@@ -44,9 +46,10 @@ public class PlayerStatus : MonoBehaviour
         weightSlider.value = weightValue / maxWeight;
 
         cholesterolText.color = cholesterolValue >= cholesterolThreshold ? new Color(1f, 0.3764706f, 0.3764706f, 1f) : new Color(1f, 1f, 1f, 1f);
+        weightText.color = weightValue >= weightThreshold ? new Color(1f, 0.3764706f, 0.3764706f, 1f) : new Color(1f, 1f, 1f, 1f);
     }
 
-    private void Die(string deathMessage) {
+    public void Die(string deathMessage) {
         playerMovement.deathMessage = deathMessage;
         isDead = true;
     }

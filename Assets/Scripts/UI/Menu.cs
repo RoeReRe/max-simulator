@@ -27,8 +27,15 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void OnCancel() {
+    public void OnCancel() {
         this.gameObject.SetActive(false);
         playerMovement.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+    }
+
+    public void ResetParams() {
+        Task[] taskList = GetComponentsInChildren<Task>();
+        foreach (Task task in taskList) {
+            task.count = 0;
+        }
     }
 }

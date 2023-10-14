@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetTrigger("isDead");
             DeathHandler deathHandler = Instantiate(deathScreen, uiCanvas.transform).GetComponent<DeathHandler>();
             deathHandler.SetDeathMessage(deathMessage);
+            menu.ResetParams();
             GetComponent<PlayerInput>().DeactivateInput();
         }
     }
