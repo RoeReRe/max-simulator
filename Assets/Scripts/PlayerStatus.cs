@@ -13,11 +13,11 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] TMP_Text weightText;
 
     [NonSerialized] public float cholesterolValue = 65f;
-    [NonSerialized] public float weightValue = 95f;
+    [NonSerialized] public float weightValue = 120f;
     [NonSerialized] public float maxCholesterol = 100f;
     [NonSerialized] public float maxWeight = 150f;
     [NonSerialized] public float cholesterolThreshold = 70f;
-    [NonSerialized] public float weightThreshold = 95f;
+    [NonSerialized] public float weightThreshold = 120f;
 
     [SerializeField] float cholesterolSpeed = 0.8f;
     [SerializeField] float weightSpeed = 0.3f;
