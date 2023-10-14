@@ -10,7 +10,7 @@ public class DeathHandler : MonoBehaviour
     private TMP_Text deathMessage;
     private float orthoSize;
     
-    private void Start() {
+    private void Awake() {
         followCamera = FindAnyObjectByType<CinemachineVirtualCamera>();
         deathMessage = GetComponentInChildren<TMP_Text>();
         orthoSize = followCamera.m_Lens.OrthographicSize;

@@ -13,10 +13,12 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D playerRigidBody;
     Animator playerAnimator;
     PlayerStatus playerStatus;
+    [SerializeField] Menu menu;
 
     [SerializeField] GameObject uiCanvas;
     [SerializeField] GameObject deathScreen;
     [NonSerialized] bool isOnDeathScreen = false;
+    [NonSerialized] public string deathMessage = "Unknown";
 
     private void Start() {
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -34,9 +36,20 @@ public class PlayerMovement : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
+    void OnMenu() {
+        StartCoroutine(OpenMenu());
+    }
+
+    IEnumerator OpenMenu() {
+        yield return new WaitForSecondsRealtime(0.1f);
+        menu.gameObject.SetActive(true);
+        GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+    }
+
     private void Walk() {
         playerRigidBody.velocity = moveInput * new Vector2(moveSpeed, moveSpeed);
-        playerAnimator.SetBool("isWalking", Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon); 
+        playerAnimator.SetBool("isWalking", Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon);
+        playerStatus.isCholesterolChanging = !(Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon); 
     }
 
     private void SetSprite() {
@@ -49,7 +62,8 @@ public class PlayerMovement : MonoBehaviour
         if (playerStatus.isDead && !isOnDeathScreen) {
             isOnDeathScreen = true;
             playerAnimator.SetTrigger("isDead");
-            Instantiate(deathScreen, uiCanvas.transform);
+            DeathHandler deathHandler = Instantiate(deathScreen, uiCanvas.transform).GetComponent<DeathHandler>();
+            deathHandler.SetDeathMessage(deathMessage);
             GetComponent<PlayerInput>().DeactivateInput();
         }
     }
