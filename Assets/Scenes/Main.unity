@@ -15921,6 +15921,10 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6282031793221325091, guid: 591d9c059f5423a43bc3bc5f24e4562f, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7383103635883103884, guid: 591d9c059f5423a43bc3bc5f24e4562f, type: 3}
       propertyPath: menu
       value: 

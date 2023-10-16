@@ -38,10 +38,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.GetComponent<TilemapCollider2D>() != null) {
-            return;
+        if (other.gameObject.CompareTag("Interactable")) {
+            lastContact = other.gameObject;
         }
-        lastContact = other.gameObject;
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Interactable")) {
+            lastContact = this.gameObject;
+        }
     }
 
     void OnMove(InputValue value) {
@@ -66,9 +71,10 @@ public class PlayerMovement : MonoBehaviour
         if (!lastContact.CompareTag("Interactable")) {
             yield break;
         }
+        GameObject cachedContact = lastContact;
         yield return new WaitForSecondsRealtime(0.1f);
         GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
-        lastContact.GetComponent<Interactable>().Interact();
+        cachedContact.GetComponent<Interactable>().Interact();
     }
 
     private void Walk() {
