@@ -6,8 +6,8 @@ public class FloorBehaviour : MonoBehaviour
 {
     [SerializeField] PlayerStatus playerStatus;
     [SerializeField] ParticleSystem smoke;
-
-    private float integrity = 5f;
+    public float maxIntegrity = 30f;
+    public float integrity = 30f;
     private float multiplier = 1f;
 
     private void Update() {
@@ -24,6 +24,6 @@ public class FloorBehaviour : MonoBehaviour
     }
 
     public void ResetParams() {
-        integrity = 30f;
+        integrity = maxIntegrity;
     }
 }

@@ -1,34 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Burpee : Task
+public class Repair : Task
 {
-    private float failRate = 50f;
-    private float successAmount = 50f;
-    private int countLimit = 2;
-
-    private float weightAmount = 25f;
+    private float failRate = 5f;
+    private float successAmount = 3f;
+    private float weightAmount = 3f;
 
     public override void DoTask() {
         StartCoroutine(DoTaskCoroutine());
     }
 
-    private void DoExercise() {
+    private void DoRepair() {
         PlayerStatus playerStatus = FindAnyObjectByType<PlayerStatus>();
+        FloorBehaviour floorBehaviour = FindAnyObjectByType<FloorBehaviour>();
         
-        if (count > countLimit && UnityEngine.Random.Range(0f, 100f) > 20) {
-            playerStatus.Die("you jumped too much and crashed through the floor");
-        }
-
-        if (UnityEngine.Random.Range(0f, 100f) > failRate) {
+        if (UnityEngine.Random.Range(0f, 100f) > failRate * Mathf.Max(1, count)) {
             playerStatus.cholesterolValue -= successAmount;
             playerStatus.weightValue -= weightAmount;
             count++;
+            floorBehaviour.integrity = floorBehaviour.maxIntegrity;
         } else {
-            playerStatus.Die("the ceiling collapsed onto you");
+            playerStatus.Die("your arteries ruptured during a push up");
         }
     }
 
@@ -40,7 +37,7 @@ public class Burpee : Task
         playerInput.DeactivateInput();
         fadeHandler.FadeOut();
         yield return new WaitForSecondsRealtime(0.7f);
-        DoExercise();
+        DoRepair();
         menu.OnCancel();
         playerInput.ActivateInput();
     }
