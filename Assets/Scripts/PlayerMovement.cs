@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,12 +22,13 @@ public class PlayerMovement : MonoBehaviour
     [NonSerialized] bool isOnDeathScreen = false;
     [NonSerialized] public string deathMessage = "Unknown";
 
-    private GameObject lastContact = null;
+    private GameObject lastContact;
 
     private void Start() {
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         playerStatus = GetComponent<PlayerStatus>();
+        lastContact = this.gameObject;
     }
 
     private void Update() {
@@ -36,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.GetComponent<TilemapCollider2D>() != null) {
+            return;
+        }
         lastContact = other.gameObject;
     }
 

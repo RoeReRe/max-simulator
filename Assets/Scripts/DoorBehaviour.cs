@@ -21,6 +21,8 @@ public class DoorBehaviour : MonoBehaviour
     private void Update() {
         if (playerStatus.weightValue < playerStatus.weightThreshold) {
             compositeCollider.isTrigger = true;
+        } else if (!compositeCollider.IsTouchingLayers(LayerMask.GetMask("Player"))) {
+            compositeCollider.isTrigger = false;
         }
     }
 
