@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     [NonSerialized] bool isOnDeathScreen = false;
     [NonSerialized] public string deathMessage = "Unknown";
 
+    private GameObject lastContact = null;
+
     private void Start() {
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
@@ -31,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
         Walk();
         SetSprite();
         CheckStatus();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        lastContact = other.gameObject;
     }
 
     void OnMove(InputValue value) {
@@ -45,6 +51,19 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         menu.gameObject.SetActive(true);
         GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+    }
+
+    void OnInteract() {
+        StartCoroutine(Interact());
+    }
+
+    IEnumerator Interact() {
+        if (!lastContact.CompareTag("Interactable")) {
+            yield break;
+        }
+        yield return new WaitForSecondsRealtime(0.1f);
+        GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+        lastContact.GetComponent<Interactable>().Interact();
     }
 
     private void Walk() {
@@ -67,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             deathHandler.SetDeathMessage(deathMessage);
             menu.ResetParams();
             floor.ResetParams();
-            // rmb to update isdead
+            // rmb to update isdead and isondeath
             GetComponent<PlayerInput>().DeactivateInput();
         }
     }

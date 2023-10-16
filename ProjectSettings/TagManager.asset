@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Door
-  - 
+  - NPC
   - 
   - 
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Obstacle Tile
     uniqueID: 465897719
+    locked: 0
+  - name: NPC
+    uniqueID: 434448411
     locked: 0
   - name: Player
     uniqueID: 1735140233

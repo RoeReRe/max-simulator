@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,8 @@ public class FloorBehaviour : MonoBehaviour
 {
     [SerializeField] PlayerStatus playerStatus;
     [SerializeField] ParticleSystem smoke;
-    public float maxIntegrity = 30f;
-    public float integrity = 30f;
+    [NonSerialized] public float maxIntegrity = 30f;
+    [NonSerialized] public float integrity = 30f;
     private float multiplier = 1f;
 
     private void Update() {
