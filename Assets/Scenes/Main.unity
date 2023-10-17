@@ -14306,6 +14306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdf23c878b9cc741b0a0ca6eadcc31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableMenu: {fileID: 1738029521}
 --- !u!212 &1792692160
 SpriteRenderer:
   m_ObjectHideFlags: 0

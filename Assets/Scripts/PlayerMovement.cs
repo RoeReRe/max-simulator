@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             menu.ResetParams();
             floor.ResetParams();
             // rmb to update isdead and isondeath
-            GetComponent<PlayerInput>().DeactivateInput();
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 public class DeathHandler : MonoBehaviour
 {
@@ -13,6 +16,7 @@ public class DeathHandler : MonoBehaviour
     private void Awake() {
         followCamera = FindAnyObjectByType<CinemachineVirtualCamera>();
         deathMessage = GetComponentInChildren<TMP_Text>();
+        GetComponentInChildren<Button>().Select();
         orthoSize = followCamera.m_Lens.OrthographicSize;
     }
 
@@ -22,5 +26,10 @@ public class DeathHandler : MonoBehaviour
 
     public void SetDeathMessage(string text) {
         deathMessage.text = "You died\nCause of death: " + text;
+    }
+
+    public void StartOver() {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
