@@ -20,6 +20,10 @@ public class DeathHandler : MonoBehaviour
         orthoSize = followCamera.m_Lens.OrthographicSize;
     }
 
+    private void Start() {
+        GetComponent<AudioSource>().Play();
+    }
+
     private void Update() {
         followCamera.m_Lens.OrthographicSize = Mathf.Clamp(followCamera.m_Lens.OrthographicSize - 0.01f, 3.5f, 6.5f);
     }
@@ -29,6 +33,11 @@ public class DeathHandler : MonoBehaviour
     }
 
     public void StartOver() {
+        StartCoroutine(StartOverCoroutine());
+    }
+
+    IEnumerator StartOverCoroutine() {
+        yield return new WaitForSecondsRealtime(0.3f);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

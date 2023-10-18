@@ -78,9 +78,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Walk() {
+        bool isWalking = Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon;
+
         playerRigidBody.velocity = moveInput * new Vector2(moveSpeed, moveSpeed);
-        playerAnimator.SetBool("isWalking", Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon);
-        playerStatus.isCholesterolChanging = !(Mathf.Abs(playerRigidBody.velocity.magnitude) > Mathf.Epsilon); 
+        playerAnimator.SetBool("isWalking", isWalking);
+        playerStatus.isCholesterolChanging = !isWalking;
     }
 
     private void SetSprite() {

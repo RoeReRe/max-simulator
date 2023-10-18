@@ -7,13 +7,14 @@ public class FloorBehaviour : MonoBehaviour
 {
     [SerializeField] PlayerStatus playerStatus;
     [SerializeField] ParticleSystem smoke;
-    [NonSerialized] public float maxIntegrity = 30f;
-    [NonSerialized] public float integrity = 30f;
+    [NonSerialized] public float maxIntegrity = 20f;
+    [NonSerialized] public float integrity = 20f;
     private float multiplier = 1f;
 
     private void Update() {
         if (integrity <= 0 && !playerStatus.isDead) {
             Instantiate(smoke, playerStatus.transform.position, smoke.transform.rotation);
+            GetComponent<AudioSource>().Play();
             playerStatus.Die("You crashed through the floor.");
         }
     }
