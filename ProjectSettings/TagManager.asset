@@ -15,7 +15,7 @@ TagManager:
   - Door
   - NPC
   - World
-  - 
+  - Tetris
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1735140233
+    locked: 0
+  - name: Tetris
+    uniqueID: 3267596919
     locked: 0

@@ -38,6 +38,7 @@ public class DeathHandler : MonoBehaviour
 
     IEnumerator StartOverCoroutine() {
         yield return new WaitForSecondsRealtime(0.3f);
+        StaticUtil.isDead = false;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

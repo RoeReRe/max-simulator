@@ -27,6 +27,17 @@ public class PlayerStatus : MonoBehaviour
 
     private void Start() {
         playerMovement = GetComponent<PlayerMovement>();
+
+        if (StaticUtil.isInvoked) {
+            StaticUtil.isInvoked = false;
+            this.gameObject.transform.position = StaticUtil.lastPosition;
+            cholesterolValue = StaticUtil.lastCholesterol;
+            weightValue = StaticUtil.lastWeight;
+
+            if (StaticUtil.isDead) {
+                Die("Atherosclerosis.");
+            }
+        }
     }
 
     private void Update() {

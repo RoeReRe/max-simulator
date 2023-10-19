@@ -7297,6 +7297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddf47dbb5a6c5a46b8a077f2497a3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageHandler: {fileID: 1546579018}
   playerStatus: {fileID: 5216028276276511517}
   smoke: {fileID: 2433282508523890284, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
 --- !u!82 &378871292
@@ -10486,7 +10487,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000f31b2a40f708c51b89236c671b28e519
+  m_ApplyToSortingLayers: 00000000f31b2a40f708c51b89236c671b28e5197792c3c2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
