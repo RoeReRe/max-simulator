@@ -21,3 +21,5 @@ The following assets were used for the development of this game:
 - [Customize Girl_ Type 0 by Blue Goblin Store](https://assetstore.unity.com/packages/2d/characters/customize-girl-type-0-149936)
 
 - [Grenade Sound FX by MGWSoundDesign](https://assetstore.unity.com/packages/audio/sound-fx/grenade-sound-fx-147490#content)
+
+- [Tetris Template by Zigurous](https://github.com/zigurous/unity-tetris-tutorial)
