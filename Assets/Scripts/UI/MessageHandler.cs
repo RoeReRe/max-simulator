@@ -10,7 +10,11 @@ public class MessageHandler : MonoBehaviour
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Return)) {
-            OnCancel();
+            if (msgText.maxVisibleCharacters < msgText.text.Length) {
+                msgText.maxVisibleCharacters = msgText.text.Length;
+            } else {
+                OnCancel();
+            }
         }
     }
 
