@@ -23,3 +23,5 @@ The following assets were used for the development of this game:
 - [Grenade Sound FX by MGWSoundDesign](https://assetstore.unity.com/packages/audio/sound-fx/grenade-sound-fx-147490#content)
 
 - [Tetris Template by Zigurous](https://github.com/zigurous/unity-tetris-tutorial)
+
+- [船酔い海賊のテーマ『Seasick Pirate』by なぐもりずの音楽室](https://nagumorizu.studio.site/)

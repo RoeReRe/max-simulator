@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 public class Burpee : Task
 {
     private float failRate = 50f;
-    private float successAmount = 50f;
+    private float successAmount = 45f;
     private int countLimit = 2;
 
-    private float weightAmount = 25f;
+    private float weightAmount = 20f;
 
     public override void DoTask() {
         StartCoroutine(DoTaskCoroutine());

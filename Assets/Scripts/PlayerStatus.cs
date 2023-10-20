@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour
     [NonSerialized] public float weightThreshold = 120f;
 
     [SerializeField] float cholesterolSpeed = 0.8f;
-    [SerializeField] float weightSpeed = 0.3f;
+    [SerializeField] float weightSpeed = 0.4f;
     [NonSerialized] public bool isCholesterolChanging = true;
 
     [NonSerialized] public bool isDead;
