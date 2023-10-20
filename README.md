@@ -2,10 +2,6 @@
 
 Max Simulator is a hypercasual social simulator game featuring a short and fun gameplay loop. Players try to get to the end of the day and not die to the absurd and spontaneous mechanics of this game.
 
-## Note
-
-This is still currently a WIP.
-
 ## Acknowledgements
 
 The following assets were used for the development of this game:
